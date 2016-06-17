@@ -216,7 +216,7 @@ final class DrydockWindowsWorkingCopyBlueprintImplementation
       $root_key = 'workingcopy.root';
       $root = $resource->getAttribute($root_key);
       if (strlen($root)) {
-        $interface->execx('rmdir /S %C', $root);
+        $interface->execx('rmdir /S /Q %C', str_replace("/", "\\", $root));
       }
     }
   }
