@@ -285,10 +285,11 @@ final class DrydockWindowsWorkingCopyBlueprintImplementation
         $ref_uri = $ref['uri'];
         $ref_ref = $ref['ref'];
 
-        $cmd[] = 'git fetch --no-tags -- %C +%C:%C';
-        $arg[] = $ref_uri;
-        $arg[] = $ref_ref;
-        $arg[] = $ref_ref;
+        $interface->execx(
+          'git fetch --no-tags -- %C +%C:%C',
+          $ref_uri,
+          $ref_ref,
+          $ref_ref);
 
         $cmd[] = 'git checkout %C --';
         $arg[] = $ref_ref;
